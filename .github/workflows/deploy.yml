@@ -1,0 +1,22 @@
+name: Deploy to Raspberry Pi
+
+on:
+  workflow_dispatch:   # manual button
+  push:
+    branches: [main]   # optional auto deploy
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest code
+        run: |
+          cd /home/raspberry/git-repo/self-host-script-job-deployment
+          git pull origin main
+
+      # - name: Restart containers via Dockge
+      #   run: |
+      #     cd /home/raspberry/docker/dockge/stacks
+      #     docker compose pull
+      #     docker compose up -d
