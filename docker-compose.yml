@@ -1,6 +1,10 @@
 version: "3.9"
-
 services:
   my-job:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-python-job:latest
     container_name: my-python-job
+networks: {}
+
