@@ -1,17 +1,17 @@
-name: Scheduled Job Runner
+# name: Scheduled Job Runner
 
-on:
-  schedule:
-    - cron: "45 * * * *"
+# on:
+#   schedule:
+#     - cron: "0 7 * * *"
 
-jobs:
-  run-job:
-    runs-on: self-hosted
+# jobs:
+#   run-job:
+#     runs-on: self-hosted
 
-    concurrency:
-      group: scheduled-job
-      cancel-in-progress: false
+#     concurrency:
+#       group: scheduled-job
+#       cancel-in-progress: false
 
-    steps:
-      - name: Run container
-        run: docker run --rm my-job:latest
+#     steps:
+#       - name: Run container
+#         run: docker run --rm my-job:latest
