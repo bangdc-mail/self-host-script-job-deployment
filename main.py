@@ -37,7 +37,40 @@ def get_dad_joke():
     except Exception as e:
         print("Error fetching joke:", e)
 
+import requests
+import random
+
+def get_random_pokemon():
+    # As of now, there are ~1025 Pokémon in the API
+    pokemon_id = random.randint(1, 1025)
+    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
+    
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to fetch data.")
+        return
+    
+    data = response.json()
+    
+    name = data["name"].title()
+    height = data["height"] / 10  # convert to meters
+    weight = data["weight"] / 10  # convert to kg
+    types = [t["type"]["name"] for t in data["types"]]
+    abilities = [a["ability"]["name"] for a in data["abilities"]]
+    
+    print(f"Name: {name}")
+    print(f"Height: {height} m")
+    print(f"Weight: {weight} kg")
+    print(f"Types: {', '.join(types)}")
+    print(f"Abilities: {', '.join(abilities)}")
+
+
+
 if __name__ == "__main__":
-    get_weather()
-    print("here's a random dad joke")
-    get_dad_joke()
+    # get_weather()
+    # print("here's a random dad joke")
+    # get_dad_joke()
+    print("This is a test. And a pokemon detail:")
+    get_random_pokemon()
+
+
