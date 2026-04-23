@@ -1,7 +1,7 @@
 name: Deploy to Raspberry Pi
 
 on:
-  workflow_dispatch:   # manual button
+  # workflow_dispatch:   # manual button, removed as this is public repo
   push:
     branches: [main]   # optional auto deploy
 
@@ -13,9 +13,10 @@ jobs:
       - name: Pull latest code
         run: |
           cd /home/raspberry/git-repo/self-host-script-job-deployment
-          git pull origin main
+          git fetch origin
+          git reset --hard origin/main
 
-      - name: Restart containers via Dockge
+      - name: Rebuild image via Dockge
         run: |
           cd /home/raspberry/git-repo/self-host-script-job-deployment
           docker compose build --no-cache my-job

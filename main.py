@@ -71,7 +71,7 @@ if __name__ == "__main__":
     # print("here's a random dad joke")
     # get_dad_joke()
     print("-" * 10)
-    print("This is a test2. And a pokemon detail:")
+    print("This is a test. And a pokemon detail:")
     get_random_pokemon()
 
 
