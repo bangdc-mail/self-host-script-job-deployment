@@ -15,8 +15,7 @@ jobs:
           cd /home/raspberry/git-repo/self-host-script-job-deployment
           git pull origin main
 
-      # - name: Restart containers via Dockge
-      #   run: |
-      #     cd /home/raspberry/docker/dockge/stacks
-      #     docker compose pull
-      #     docker compose up -d
+      - name: Restart containers via Dockge
+        run: |
+          cd /home/raspberry/git-repo/self-host-script-job-deployment
+          docker compose build --no-cache my-job
